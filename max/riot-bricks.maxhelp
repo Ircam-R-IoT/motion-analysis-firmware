@@ -4,12 +4,12 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 0,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 1809.0, 147.0, 984.0, 625.0 ],
+		"rect" : [ 422.0, 147.0, 984.0, 625.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -51,7 +51,7 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 0,
-							"revision" : 4,
+							"revision" : 5,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
@@ -167,7 +167,7 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 0,
-							"revision" : 4,
+							"revision" : 5,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
@@ -253,12 +253,12 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 0,
-							"revision" : 4,
+							"revision" : 5,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 1809.0, 173.0, 984.0, 599.0 ],
+						"rect" : [ 422.0, 173.0, 984.0, 599.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -474,7 +474,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 1371.655884, 295.0, 46.199997, 39.0 ],
+									"patching_rect" : [ 1371.655884, 295.0, 47.0, 39.0 ],
 									"style" : "",
 									"text" : "freefall"
 								}
@@ -489,7 +489,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 1334.655884, 471.0, 77.199951, 93.0 ],
+									"patching_rect" : [ 1334.655884, 471.0, 79.0, 93.0 ],
 									"style" : "",
 									"text" : "acceleration\n0=freefall\n1=static (1g reaction on the object)"
 								}
@@ -550,7 +550,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 1415.755859, 343.0, 44.300018, 22.0 ],
+									"patching_rect" : [ 1415.755859, 343.0, 45.0, 22.0 ],
 									"style" : ""
 								}
 
@@ -576,9 +576,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 1298.264404, 305.5, 45.0, 22.0 ],
+									"patching_rect" : [ 1282.264404, 317.5, 67.0, 22.0 ],
 									"style" : "",
-									"text" : "/ 1000."
+									"text" : "/ 1000000."
 								}
 
 							}
@@ -589,9 +589,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 1272.204834, 276.0, 45.0, 22.0 ],
+									"patching_rect" : [ 1272.204834, 276.0, 67.0, 22.0 ],
 									"style" : "",
-									"text" : "/ 1000."
+									"text" : "/ 1000000."
 								}
 
 							}
@@ -689,9 +689,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 1246.026245, 248.0, 49.0, 22.0 ],
+									"patching_rect" : [ 1246.026245, 248.0, 67.0, 22.0 ],
 									"style" : "",
-									"text" : "/ 1000."
+									"text" : "/ 1000000."
 								}
 
 							}
@@ -702,9 +702,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 1298.264404, 374.0, 45.0, 22.0 ],
+									"patching_rect" : [ 1290.264404, 375.0, 67.0, 22.0 ],
 									"style" : "",
-									"text" : "/ 1000."
+									"text" : "/ 1000000."
 								}
 
 							}
@@ -1244,7 +1244,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 693.5, 432.5, 77.0, 69.0 ],
+									"patching_rect" : [ 693.5, 432.5, 83.0, 69.0 ],
 									"style" : "",
 									"text" : "Battery (V) \n> 3.5\ncharged > 3.9"
 								}
@@ -1259,7 +1259,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 807.551575, 431.0, 79.0, 69.0 ],
+									"patching_rect" : [ 807.551575, 431.0, 82.0, 69.0 ],
 									"style" : "",
 									"text" : "Sampling period [ms] (resampled by Max)"
 								}
@@ -1679,7 +1679,7 @@
 									"destination" : [ "obj-61", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1307.764404, 456.0, 1307.526245, 456.0 ],
+									"midpoints" : [ 1299.764404, 456.0, 1307.526245, 456.0 ],
 									"source" : [ "obj-114", 0 ]
 								}
 
@@ -1892,7 +1892,7 @@
 									"destination" : [ "obj-62", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1307.764404, 347.0, 1284.526245, 347.0 ],
+									"midpoints" : [ 1291.764404, 347.0, 1284.526245, 347.0 ],
 									"source" : [ "obj-65", 0 ]
 								}
 
@@ -1902,7 +1902,7 @@
 									"destination" : [ "obj-114", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1333.883423, 291.0, 1333.0, 291.0, 1333.0, 356.0, 1307.764404, 356.0 ],
+									"midpoints" : [ 1333.883423, 291.0, 1333.0, 291.0, 1333.0, 356.0, 1299.764404, 356.0 ],
 									"source" : [ "obj-76", 3 ]
 								}
 
@@ -1956,7 +1956,7 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "riot-bricks.maxpat",
-				"bootpath" : "~/Downloads/github/max",
+				"bootpath" : "~/Documents/github/RIoT/max",
 				"type" : "JSON",
 				"implicit" : 1
 			}

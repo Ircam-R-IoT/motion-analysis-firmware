@@ -1,5 +1,5 @@
 # RIoT
-This project has been developed by the ISMM team at IRCAM-Centre Pompidou within the MusicBricks project funded by the European Union's Horizon 2020 research and innovation programme.
+This project has been developed by the ISMM team at IRCAM-Centre Pompidou within the CosSiMa project (funded by ANR) and the MusicBricks projectfunded by the European Union's Horizon 2020 research and innovation programme.
 
 The Max patches require MuBu for Max (ISMM team at IRCAM-Centre Pompidou),
 free download at http://forumnet.ircam.fr/product/mubu/

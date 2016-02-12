@@ -34,7 +34,7 @@ char ssid[32] = "riot";
 IPAddress DestIP = IPAddress(192,168,1,100);
 uint16_t DestPort = 8888;
 uint8_t ModuleID = 0;
-unsigned long SampleRate = 5;
+unsigned long SampleRate = 5;    
 int status = WL_IDLE_STATUS;
 int statusAP = false;
 int PacketStatus;
@@ -105,13 +105,16 @@ float mag_cal[3];  // calibrated1 version of the mag sensor data
 
 // For the object "shake"
 float acc_last_three[3][3] = {{0., 0., 0.}, {0., 0., 0.}, {0., 0., 0.}};// a_x, a_y, a_z at times t_n, t_n-1, t_n-2 (size = 3x3)
-float acc_delta[3]; //derivative at current time
+boolean acc_delta[3][2] = {{0, 0}, {0, 0}, {0, 0}}; //derivative at current time and previous time greater than threshold?
+//float acc_delta[3]; //derivative at current time
+
 boolean shake_window[3][SHAKE_WINDOWSIZE] = {0};
 int shake_nb[3] = {0, 0, 0};//Number of ones in current shake_window
 float shaking_raw;
 float shake_slide_prev;
 float shaking;
 unsigned short int LoopIndex = 0;
+//unsigned short int LoopIndexPeriod = lcm(lcm(2,3), SHAKE_WINDOWSIZE);
 unsigned short int LoopIndexPeriod = lcm(3, SHAKE_WINDOWSIZE);
 
 float w_bx = 0, w_by = 0, w_bz = 0; // estimate gyroscope biases error
@@ -313,10 +316,12 @@ void loop() {
       acc_last_three[1][LoopIndex % 3] = a_y;
       acc_last_three[2][LoopIndex % 3] = a_z;
       
+      /*** old version ***/
+      /*
+      
       acc_delta[0] = delta(acc_last_three[0][(LoopIndex+1) % 3], a_x, 1.0f);       //acc_last_three[i][(LoopIndex+1) % 3] contains the value of the acceleration from the penultimate sample (n-2)
       acc_delta[1] = delta(acc_last_three[1][(LoopIndex+1) % 3], a_y, 1.0f);
       acc_delta[2] = delta(acc_last_three[2][(LoopIndex+1) % 3], a_z, 1.0f);
-      
       for (int k = 0; k<3; k++){
         if (shake_window[k][LoopIndex % SHAKE_WINDOWSIZE]){
           shake_nb[k]--;
@@ -328,8 +333,82 @@ void loop() {
         else {
           shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 0;
         }
+      }*/
+      
+
+      /*** new version ***/
+
+     /* for (int k = 0; k<3; k++){
+        acc_delta[k][(LoopIndex+1) % 2] = acc_delta[k][LoopIndex % 2];
       }
-     
+    */
+
+    
+      //DETAILED new version
+      if (delta(acc_last_three[0][(LoopIndex+1) % 3], a_x, 1.0) > SHAKE_THRESHOLD){
+        acc_delta[0][LoopIndex % 2] = 1;
+      }
+      else {
+        acc_delta[0][LoopIndex % 2] = 0;
+      }
+       if (delta(acc_last_three[1][(LoopIndex+1) % 3], a_y, 1.0) > SHAKE_THRESHOLD){
+        acc_delta[1][LoopIndex % 2] = 1;
+      }
+      else {
+        acc_delta[1][LoopIndex % 2] = 0;
+      }
+       if (delta(acc_last_three[2][(LoopIndex+1) % 3], a_z, 1.0) > SHAKE_THRESHOLD){
+        acc_delta[2][LoopIndex % 2] = 1;
+      }
+      else {
+        acc_delta[2][LoopIndex % 2] = 0;
+      }
+      
+      
+      for (int k = 0; k<3; k++){
+        if (shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] == 1){
+          shake_nb[k]--;
+        }
+        
+        if (acc_delta[k][LoopIndex % 2] == 1){
+          if (acc_delta[k][(LoopIndex+1) % 2] == 1){
+            shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 0;
+          }
+          else {
+            shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 1;
+            shake_nb[k]++;
+          }
+        }
+        else {
+          if (acc_delta[k][(LoopIndex+1) % 2] == 1){
+            shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 1;
+            shake_nb[k]++;
+          }
+          else {
+            shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 0;
+          }
+        }
+      }
+      
+      //new version, the short way -- should be equivalent to the detailed version
+      /* 
+      acc_delta[0][LoopIndex % 2] = (delta(acc_last_three[0][(LoopIndex+1) % 3], a_x, 1.0f) > SHAKE_THRESHOLD);       //acc_last_three[k][(LoopIndex+1) % 3] contains the value of the acceleration from the penultimate sample (n-2)
+      acc_delta[1][LoopIndex % 2] = (delta(acc_last_three[1][(LoopIndex+1) % 3], a_y, 1.0f) > SHAKE_THRESHOLD);
+      acc_delta[2][LoopIndex % 2] = (delta(acc_last_three[2][(LoopIndex+1) % 3], a_z, 1.0f) > SHAKE_THRESHOLD);
+      
+      
+      for (int k = 0; k<3; k++){
+        if (shake_window[k][LoopIndex % SHAKE_WINDOWSIZE]){
+          shake_nb[k]--;
+        }
+        
+        shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = (acc_delta[k][LoopIndex % 2] != acc_delta[k][(LoopIndex+1) % 2]);
+        if (shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] == 1){
+          shake_nb[k]++;  
+        }
+      }        
+      */
+      
       shaking_raw = magnitude3D(shake_nb[0], shake_nb[1], shake_nb[2])/SHAKE_WINDOWSIZE;
       shake_slide_prev = shaking;
       shaking = slide(shake_slide_prev, shaking_raw, SHAKE_SLIDE_FACTOR);

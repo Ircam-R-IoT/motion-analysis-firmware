@@ -314,100 +314,20 @@ void loop() {
       //SHAKE
       acc_last_three[0][LoopIndex % 3] = a_x;
       acc_last_three[1][LoopIndex % 3] = a_y;
-      acc_last_three[2][LoopIndex % 3] = a_z;
-      
-      /*** old version ***/
-      /*
-      
-      acc_delta[0] = delta(acc_last_three[0][(LoopIndex+1) % 3], a_x, 1.0f);       //acc_last_three[i][(LoopIndex+1) % 3] contains the value of the acceleration from the penultimate sample (n-2)
-      acc_delta[1] = delta(acc_last_three[1][(LoopIndex+1) % 3], a_y, 1.0f);
-      acc_delta[2] = delta(acc_last_three[2][(LoopIndex+1) % 3], a_z, 1.0f);
-      for (int k = 0; k<3; k++){
-        if (shake_window[k][LoopIndex % SHAKE_WINDOWSIZE]){
-          shake_nb[k]--;
-        }
-        if (acc_delta[k] > SHAKE_THRESHOLD){
-          shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 1;
-          shake_nb[k]++;
-        }
-        else {
-          shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 0;
-        }
-      }*/
-      
-
-      /*** new version ***/
-
-     /* for (int k = 0; k<3; k++){
-        acc_delta[k][(LoopIndex+1) % 2] = acc_delta[k][LoopIndex % 2];
-      }
-    */
-
-    
-      //DETAILED new version
-      if (delta(acc_last_three[0][(LoopIndex+1) % 3], a_x, 1.0) > SHAKE_THRESHOLD){
-        acc_delta[0][LoopIndex % 2] = 1;
-      }
-      else {
-        acc_delta[0][LoopIndex % 2] = 0;
-      }
-       if (delta(acc_last_three[1][(LoopIndex+1) % 3], a_y, 1.0) > SHAKE_THRESHOLD){
-        acc_delta[1][LoopIndex % 2] = 1;
-      }
-      else {
-        acc_delta[1][LoopIndex % 2] = 0;
-      }
-       if (delta(acc_last_three[2][(LoopIndex+1) % 3], a_z, 1.0) > SHAKE_THRESHOLD){
-        acc_delta[2][LoopIndex % 2] = 1;
-      }
-      else {
-        acc_delta[2][LoopIndex % 2] = 0;
-      }
-      
-      
-      for (int k = 0; k<3; k++){
-        if (shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] == 1){
-          shake_nb[k]--;
-        }
-        
-        if (acc_delta[k][LoopIndex % 2] == 1){
-          if (acc_delta[k][(LoopIndex+1) % 2] == 1){
-            shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 0;
-          }
-          else {
-            shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 1;
-            shake_nb[k]++;
-          }
-        }
-        else {
-          if (acc_delta[k][(LoopIndex+1) % 2] == 1){
-            shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 1;
-            shake_nb[k]++;
-          }
-          else {
-            shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = 0;
-          }
-        }
-      }
-      
-      //new version, the short way -- should be equivalent to the detailed version
-      /* 
-      acc_delta[0][LoopIndex % 2] = (delta(acc_last_three[0][(LoopIndex+1) % 3], a_x, 1.0f) > SHAKE_THRESHOLD);       //acc_last_three[k][(LoopIndex+1) % 3] contains the value of the acceleration from the penultimate sample (n-2)
-      acc_delta[1][LoopIndex % 2] = (delta(acc_last_three[1][(LoopIndex+1) % 3], a_y, 1.0f) > SHAKE_THRESHOLD);
-      acc_delta[2][LoopIndex % 2] = (delta(acc_last_three[2][(LoopIndex+1) % 3], a_z, 1.0f) > SHAKE_THRESHOLD);
-      
+      acc_last_three[2][LoopIndex % 3] = a_z;          
+      acc_delta[0][LoopIndex % 2] = (delta(acc_last_three[0][(LoopIndex+1) % 3], a_x, 1.0) > SHAKE_THRESHOLD);       //acc_last_three[k][(LoopIndex+1) % 3] contains the value of the acceleration from the penultimate sample (n-2)
+      acc_delta[1][LoopIndex % 2] = (delta(acc_last_three[1][(LoopIndex+1) % 3], a_y, 1.0) > SHAKE_THRESHOLD);
+      acc_delta[2][LoopIndex % 2] = (delta(acc_last_three[2][(LoopIndex+1) % 3], a_z, 1.0) > SHAKE_THRESHOLD);
       
       for (int k = 0; k<3; k++){
         if (shake_window[k][LoopIndex % SHAKE_WINDOWSIZE]){
           shake_nb[k]--;
-        }
-        
+        }    
         shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] = (acc_delta[k][LoopIndex % 2] != acc_delta[k][(LoopIndex+1) % 2]);
-        if (shake_window[k][LoopIndex % SHAKE_WINDOWSIZE] == 1){
+        if (shake_window[k][LoopIndex % SHAKE_WINDOWSIZE]){
           shake_nb[k]++;  
         }
-      }        
-      */
+      }             
       
       shaking_raw = magnitude3D(shake_nb[0], shake_nb[1], shake_nb[2])/SHAKE_WINDOWSIZE;
       shake_slide_prev = shaking;

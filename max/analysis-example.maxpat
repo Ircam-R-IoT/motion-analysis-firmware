@@ -3,13 +3,13 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 0,
-			"revision" : 4,
+			"minor" : 1,
+			"revision" : 0,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 34.0, 79.0, 1079.0, 739.0 ],
+		"rect" : [ 34.0, 79.0, 1372.0, 716.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -2237,49 +2237,49 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "riot.maxpat",
-				"bootpath" : "~/Downloads/max/clean",
+				"bootpath" : "~/Documents/github/RIoT/max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "freefall.maxpat",
-				"bootpath" : "~/Downloads/max/clean",
+				"bootpath" : "~/Documents/github/RIoT/max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "spin.maxpat",
-				"bootpath" : "~/Downloads/max/clean",
+				"bootpath" : "~/Documents/github/RIoT/max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "kick.maxpat",
-				"bootpath" : "~/Downloads/max/clean",
+				"bootpath" : "~/Documents/github/RIoT/max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "still.maxpat",
-				"bootpath" : "~/Downloads/max/clean",
+				"bootpath" : "~/Documents/github/RIoT/max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "record-save.maxpat",
-				"bootpath" : "~/Downloads/max/clean",
+				"bootpath" : "~/Documents/github/RIoT/max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "shake.maxpat",
-				"bootpath" : "~/Downloads/max/clean",
+				"bootpath" : "~/Documents/github/RIoT/max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "intensity.maxpat",
-				"bootpath" : "~/Downloads/max/clean",
+				"bootpath" : "~/Documents/github/RIoT/max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -2304,7 +2304,7 @@
 				"type" : "iLaX"
 			}
  ],
-		"embedsnapshot" : 0
+		"autosave" : 0
 	}
 
 }

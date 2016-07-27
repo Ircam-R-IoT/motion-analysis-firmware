@@ -6,4 +6,6 @@ free download at http://forumnet.ircam.fr/product/mubu/
 
 For gesture recognition and mapping, see the following objects in the MuBu package:
 - gf - gesturefollowing
-- mubu.gmm, mubu.gmr, mubu.hhmm.mubu.xmr, see http://nime2014.org/proceedings/papers/482_paper.pdf
+- mubu.gmm, mubu.gmr, mubu.hhmm.mubu.xmr, see http://www.nime.org/proceedings/2014/nime2014_482.pdf
+
+For full documentation of the RIoT visit http://ismm.ircam.fr/riot/

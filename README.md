@@ -1,6 +1,6 @@
 # RIoT
 
-#### warning
+#### <span style="color:red">warning</span>
 
 This is the original R-IoT repository, moved from the Ircam-RnD organization.  
 It is kept here for reference, but please note that :

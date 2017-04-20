@@ -5,7 +5,7 @@
 This is the original R-IoT repository, moved from the Ircam-RnD organization.  
 It is kept here for reference, but please note that :
 - The main firmware repository maintained by IRCAM is now located at [github.com/Ircam-R-IoT/firmware](https://github.com/Ircam-R-IoT/firmware), and the official firmware repository maintained by BITalino is located at [github.com/BITalinoWorld/firmware-bitalino-riot](https://github.com/BITalinoWorld/firmware-bitalino-riot)
-- The Max abstractions present in this repository are now part of the MuBu release and require the firmware v1.8 or higher
+- Starting from version 1.9.2, the [MuBu release](http://forumnet.ircam.fr/product/mubu-en/) contains the Max abstractions present in this repository and requires the firmware v1.8 and higher to work properly
 
 - - - -
 

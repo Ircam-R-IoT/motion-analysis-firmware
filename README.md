@@ -23,3 +23,16 @@ For gesture recognition and mapping, see the following objects in the MuBu packa
 - mubu.gmm, mubu.gmr, mubu.hhmm, mubu.xmr, see http://www.nime.org/proceedings/2014/nime2014_482.pdf
 
 For full documentation of the RIoT visit http://ismm.ircam.fr/riot/
+
+#### license
+
+The energia code for the R-IoT wireless sensors has been developed by the ISMM team at IRCAM-Centre Pompidou, with support of the MusicBricks project funded by the European Union's Horizon 2020 research and innovation programme.  
+  
+This project is released under the GPLv3 license. For commercial applications, a proprietary license is available upon request to Frederick Rousseau frederick.rousseau@ircam.fr.  
+  
+R-IoT is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.  
+  
+R-IoT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  
+  
+You should have received a copy of the GNU General Public License along with R-IoT. If not, see http://www.gnu.org/licenses/.
+
